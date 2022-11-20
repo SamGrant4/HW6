@@ -10,31 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW6 - JQuery</title>
 
-    <!-- Reference CDN to get JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
         crossorigin="anonymous"></script>
     
-    <style>
-        .timer-background{
-            background-color: grey;
-            color: white;
-            width: 100px;
-            height: 30px;
-            text-align: center;
-            font-size: x-large;
-            font-weight: bold;
-        }
-        .timer-button{
-            background-color: gold;
-            color: white;
-            text-align: center;
-            font-size: large;
-            border-radius: 8px;
-            padding: 5px;
-            margin: 5px;
-        }
-    </style>
     <script>
         $(document).ready(function() {
             var seconds = 00;
@@ -52,7 +31,7 @@
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
                 animationInterval = setInterval(animateTimer, 10);
-                $timerParagraph.css("background-color", "darkred");
+                $timerParagraph.css("background-color", "lightgreen");
             });
             
             $buttonStop.click(function() {  
@@ -63,7 +42,7 @@
                 $timerParagraph.stop(true, true)
                 $timerParagraph.css("opacity", "1");
 
-                $timerParagraph.css("background-color", "green");
+                $timerParagraph.css("background-color", "rgb(228,74,75)");
             });
 
             $buttonReset.click(function() {  
@@ -78,7 +57,7 @@
                 seconds = "00";
                 $appendTens.html(tens);
                 $appendSeconds.html(seconds);
-                $timerParagraph.css("background-color", "grey");
+                $timerParagraph.css("background-color", "rgb(171,213,238)");
             });
 
             $timerParagraph.addClass("timer-background");
@@ -114,14 +93,80 @@
                 $timerParagraph.fadeTo(300,0.8);
                 $timerParagraph.fadeTo(300,1.0);
             }
+
+            // styling
+            $("body").css({
+                "justify-content": "center",
+                "align-items": "center",
+                "background-color": "rgb(107,171,220)",
+                "display": "flex",
+                "flex-direction": "column",
+            });
+            $(".wrapper").css({
+                "background-image": "url(snowman.jpg)",
+                "width": "600px",
+                "height": "450px",
+                "border-style": "solid",
+                "border-color": "red",
+            });
+            $(".timer-background").css({
+                "background-color": "rgb(171,213,238)",
+                "width": "200px",
+                "height": "60px",
+                "position": "relative",
+                "left": "100px",
+                "top": "-10px",
+                "color": "white",
+                "text-align": "center",
+                "font-size": "300%",
+                "font-style": "oblique",
+                "font-weight": "bold",
+                "border-style": "solid",
+                "border-color": "black",
+                "border-radius": "8px",
+            });
+            $(".timer-button").css({
+                "background-color": "rgb(228,74,75)",
+                "width": "75px",
+                "height": "40px",
+                "position": "relative",
+                "color": "white",
+                "font-style": "oblique",
+                "font-size": "large",
+                "text-align": "center",
+                "border-radius": "8px",
+                "padding": "5px",
+                "margin": "5px",
+            });
+            $("#button-start").css({
+                "left": "155px",
+                "top": "-30px",
+            });
+            $("#button-stop").css({
+                "left": "65px",
+                "top": "23px",
+            });
+            $("#button-reset").css({
+                "left": "-23px",
+                "top": "75px",
+            });
+            $("#title").css({
+                "width": "300px",
+                "background-color": "rgb(107,171,220)",
+                "position": "relative",
+                "left": "75px",
+                "top": "10px",
+                "color": "white",
+                "font-style": "oblique",
+                "text-shadow": "2px 2px 1px rgb(228,74,75)",
+            });
         });
     </script>
 </head>
 
 <body>
     <div class="wrapper">
-        <h1>Stopwatch</h1>
-        <h2>Vanilla JavaScript Stopwatch</h2>
+        <h1 id="title">JQuery Stopwatch</h1>
         <p id="timer"><span id="seconds">00</span>:<span id="tens">00</span></p>
         <button id="button-start">Start</button>
         <button id="button-stop">Stop</button>
