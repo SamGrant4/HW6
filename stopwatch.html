@@ -22,8 +22,17 @@
             width: 100px;
             height: 30px;
             text-align: center;
-            font-size: large;
+            font-size: x-large;
             font-weight: bold;
+        }
+        .timer-button{
+            background-color: gold;
+            color: white;
+            text-align: center;
+            font-size: large;
+            border-radius: 8px;
+            padding: 5px;
+            margin: 5px;
         }
     </style>
     <script>
@@ -60,6 +69,9 @@
             });
 
             $timerParagraph.addClass("timer-background");
+            $buttonStart.addClass("timer-button")
+            $buttonStop.addClass("timer-button")
+            $buttonReset.addClass("timer-button")
 
             function startTimer() {
                 tens++;
