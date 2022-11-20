@@ -46,32 +46,45 @@
             var $buttonReset = $("#button-reset")
             var $timerParagraph = $("#timer")
             var interval;
+            var animationInterval;
 
             $buttonStart.click(function() {  
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
-                $timerParagraph.css("background-color", "red")
+                animationInterval = setInterval(animateTimer, 10);
+                $timerParagraph.css("background-color", "darkred");
             });
             
             $buttonStop.click(function() {  
                 clearInterval(interval);
-                $timerParagraph.css("background-color", "green")
+
+                // stops animation and resets opacity
+                clearInterval(animationInterval);
+                $timerParagraph.stop(true, true)
+                $timerParagraph.css("opacity", "1");
+
+                $timerParagraph.css("background-color", "green");
             });
 
             $buttonReset.click(function() {  
                 clearInterval(interval);
+
+                // stops animation and resets opacity
+                clearInterval(animationInterval);
+                $timerParagraph.stop(true, true)
+                $timerParagraph.css("opacity", "1");
+
                 tens = "00";
                 seconds = "00";
-
                 $appendTens.html(tens);
                 $appendSeconds.html(seconds);
-                $timerParagraph.css("background-color", "grey")
+                $timerParagraph.css("background-color", "grey");
             });
 
             $timerParagraph.addClass("timer-background");
-            $buttonStart.addClass("timer-button")
-            $buttonStop.addClass("timer-button")
-            $buttonReset.addClass("timer-button")
+            $buttonStart.addClass("timer-button");
+            $buttonStop.addClass("timer-button");
+            $buttonReset.addClass("timer-button");
 
             function startTimer() {
                 tens++;
@@ -95,6 +108,11 @@
                 if (seconds > 9) {
                     $appendSeconds.html(seconds)
                 }
+            }
+
+            function animateTimer() {
+                $timerParagraph.fadeTo(300,0.8);
+                $timerParagraph.fadeTo(300,1.0);
             }
         });
     </script>
