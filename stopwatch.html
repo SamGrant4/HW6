@@ -41,10 +41,12 @@
             $buttonStart.click(function() {  
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
+                $timerParagraph.css("background-color", "red")
             });
             
             $buttonStop.click(function() {  
                 clearInterval(interval);
+                $timerParagraph.css("background-color", "green")
             });
 
             $buttonReset.click(function() {  
@@ -54,9 +56,9 @@
 
                 $appendTens.html(tens);
                 $appendSeconds.html(seconds);
+                $timerParagraph.css("background-color", "grey")
             });
 
-            // add a class named “timer-background” to the paragraph tag
             $timerParagraph.addClass("timer-background");
 
             function startTimer() {
