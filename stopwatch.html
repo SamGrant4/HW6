@@ -14,7 +14,18 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
         crossorigin="anonymous"></script>
-        
+    
+    <style>
+        .timer-background{
+            background-color: grey;
+            color: white;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
     <script>
         $(document).ready(function() {
             var seconds = 00;
@@ -24,6 +35,7 @@
             var $buttonStart = $("#button-start")
             var $buttonStop = $("#button-stop")
             var $buttonReset = $("#button-reset")
+            var $timerParagraph = $("#timer")
             var interval;
 
             $buttonStart.click(function() {  
@@ -43,6 +55,9 @@
                 $appendTens.html(tens);
                 $appendSeconds.html(seconds);
             });
+
+            // add a class named “timer-background” to the paragraph tag
+            $timerParagraph.addClass("timer-background");
 
             function startTimer() {
                 tens++;
@@ -75,7 +90,7 @@
     <div class="wrapper">
         <h1>Stopwatch</h1>
         <h2>Vanilla JavaScript Stopwatch</h2>
-        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+        <p id="timer"><span id="seconds">00</span>:<span id="tens">00</span></p>
         <button id="button-start">Start</button>
         <button id="button-stop">Stop</button>
         <button id="button-reset">Reset</button>
